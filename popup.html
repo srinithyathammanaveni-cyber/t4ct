@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Productivity Tracker</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <div class="popup">
+    <!-- Header -->
+    <div class="popup-header">
+      <h1><i class="fas fa-chart-line"></i> Productivity</h1>
+      <span class="version">v2.0</span>
+    </div>
+    
+    <!-- Today's Stats -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-label">Today's Score</div>
+        <div class="stat-value" id="todayScore">0%</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Productive</div>
+        <div class="stat-value productive" id="todayProductive">0m</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Unproductive</div>
+        <div class="stat-value unproductive" id="todayUnproductive">0m</div>
+      </div>
+    </div>
+    
+    <!-- Current Site -->
+    <div class="current-site">
+      <h3><i class="fas fa-globe"></i> Current Site</h3>
+      <div class="site-info" id="currentSite">
+        <span class="site-domain">Loading...</span>
+        <span class="site-time" id="currentTime">0m</span>
+      </div>
+    </div>
+    
+    <!-- Top Sites Today -->
+    <div class="top-sites">
+      <h3><i class="fas fa-fire"></i> Top Sites Today</h3>
+      <div id="topSitesList" class="sites-list"></div>
+    </div>
+    
+    <!-- Action Buttons -->
+    <div class="popup-footer">
+      <button id="dashboardBtn" class="btn btn-primary">
+        <i class="fas fa-chart-pie"></i> Dashboard
+      </button>
+      <button id="resetBtn" class="btn btn-secondary">
+        <i class="fas fa-redo-alt"></i> Reset
+      </button>
+      <button id="settingsBtn" class="btn btn-icon">
+        <i class="fas fa-cog"></i>
+      </button>
+    </div>
+  </div>
+  
+  <script src="popup.js"></script>
+</body>
+</html>

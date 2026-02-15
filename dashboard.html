@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Productivity Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Load Chart.js from local fallback -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+</head>
+<body>
+  <div class="dashboard">
+    <!-- Header -->
+    <div class="dashboard-header">
+      <h1><i class="fas fa-chart-line"></i> Productivity Dashboard</h1>
+      <div class="header-actions">
+        <button id="refreshBtn" class="btn btn-secondary">
+          <i class="fas fa-sync-alt"></i> Refresh
+        </button>
+        <button id="exportBtn" class="btn btn-secondary">
+          <i class="fas fa-download"></i> Export
+        </button>
+        <button id="settingsBtn" class="btn btn-primary">
+          <i class="fas fa-cog"></i> Settings
+        </button>
+      </div>
+    </div>
+    
+    <!-- Stats Cards -->
+    <div class="stats-grid">
+      <!-- Today's Card -->
+      <div class="card">
+        <h3><i class="fas fa-calendar-day"></i> Today</h3>
+        <div class="metric">
+          <span>Productive:</span>
+          <span class="metric-value productive" id="todayProd">0 min</span>
+        </div>
+        <div class="metric">
+          <span>Unproductive:</span>
+          <span class="metric-value unproductive" id="todayUnprod">0 min</span>
+        </div>
+        <div class="metric">
+          <span>Neutral:</span>
+          <span class="metric-value" id="todayNeutral">0 min</span>
+        </div>
+        <div class="metric">
+          <span>Total:</span>
+          <span class="metric-value" id="todayTotal">0 min</span>
+        </div>
+        <div class="metric">
+          <span>Productivity Score:</span>
+          <span class="metric-value" id="todayScore">0%</span>
+        </div>
+        <div class="chart-container">
+          <canvas id="todayChart"></canvas>
+        </div>
+      </div>
+      
+      <!-- Weekly Card -->
+      <div class="card">
+        <h3><i class="fas fa-calendar-week"></i> This Week</h3>
+        <div class="metric">
+          <span>Productive:</span>
+          <span class="metric-value productive" id="weekProd">0 min</span>
+        </div>
+        <div class="metric">
+          <span>Unproductive:</span>
+          <span class="metric-value unproductive" id="weekUnprod">0 min</span>
+        </div>
+        <div class="metric">
+          <span>Neutral:</span>
+          <span class="metric-value" id="weekNeutral">0 min</span>
+        </div>
+        <div class="metric">
+          <span>Total:</span>
+          <span class="metric-value" id="weekTotal">0 min</span>
+        </div>
+        <div class="metric">
+          <span>Avg Score:</span>
+          <span class="metric-value" id="weekScore">0%</span>
+        </div>
+        <div class="chart-container">
+          <canvas id="weekChart"></canvas>
+        </div>
+      </div>
+      
+      <!-- Monthly Card -->
+      <div class="card">
+        <h3><i class="fas fa-calendar-alt"></i> This Month</h3>
+        <div class="metric">
+          <span>Productive:</span>
+          <span class="metric-value productive" id="monthProd">0 min</span>
+        </div>
+        <div class="metric">
+          <span>Unproductive:</span>
+          <span class="metric-value unproductive" id="monthUnprod">0 min</span>
+        </div>
+        <div class="metric">
+          <span>Neutral:</span>
+          <span class="metric-value" id="monthNeutral">0 min</span>
+        </div>
+        <div class="metric">
+          <span>Total:</span>
+          <span class="metric-value" id="monthTotal">0 min</span>
+        </div>
+        <div class="metric">
+          <span>Productivity:</span>
+          <span class="metric-value" id="monthScore">0%</span>
+        </div>
+        <div class="chart-container">
+          <canvas id="monthChart"></canvas>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Top Sites Table -->
+    <div class="card full-width">
+      <div class="card-header">
+        <h3><i class="fas fa-list"></i> Top Sites</h3>
+        <div class="tab-buttons">
+          <button class="tab-btn active" data-period="daily">Today</button>
+          <button class="tab-btn" data-period="weekly">This Week</button>
+          <button class="tab-btn" data-period="monthly">This Month</button>
+        </div>
+      </div>
+      <div class="table-container">
+        <table class="sites-table">
+          <thead>
+            <tr>
+              <th>Website</th>
+              <th>Category</th>
+              <th>Time Spent</th>
+              <th>Visits</th>
+              <th>% of Total</th>
+            </tr>
+          </thead>
+          <tbody id="sitesTableBody"></tbody>
+        </table>
+      </div>
+    </div>
+    
+    <!-- Weekly Reports -->
+    <div class="card full-width">
+      <h3><i class="fas fa-history"></i> Weekly Reports</h3>
+      <div class="reports-list" id="reportsList"></div>
+    </div>
+  </div>
+  
+  <script src="dashboard.js"></script>
+</body>
+</html>
